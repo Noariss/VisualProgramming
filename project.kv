@@ -1,0 +1,301 @@
+<Input>:
+	vvod: vvod
+	Image:
+		size : self.size
+		source :  "f:/project/images/input1.png"
+	TextInput:
+		font_size : 20
+		id: vvod
+		text : ""
+		background_normal: ''
+		background_color : 0.75,0.39,0.39
+		multiline : False
+		size : 320, 108
+		size_hint : None, None
+		pos_hint : {'center_y' : 0.5}
+		on_text_validate:
+			root.save()
+	Image:
+		source :  "f:/project/images/input2.png"	
+
+<Output>:
+	vivod: vivod
+	Image:
+		size : self.size
+		source :  "f:/project/images/output1.png"
+	TextInput:
+		font_size : 20
+		id: vivod
+		text : ""
+		background_normal: ''
+		background_color : 0.55,0.89,0.36
+		multiline : False
+		size : 320, 108
+		size_hint : None, None
+		pos_hint : {'center_y' : 0.5}
+		on_text_validate:
+			root.saveout()
+	Image:
+		source :  "f:/project/images/output2.png"
+
+<Chicl>:
+	chicl: chicl
+	Image:
+		size : self.size
+		source :  "f:/project/images/chicl1.png"
+	TextInput:
+		font_size : 20
+		id: chicl
+		text : ""
+		background_normal: ''
+		background_color : 0.69,0.46,0.13
+		multiline : False
+		size : 320, 108
+		size_hint : None, None
+		pos_hint : {'center_y' : 0.5}
+		on_text_validate:
+			root.add_chicl()
+	Image:
+		source :  "f:/project/images/chicl2.png"
+
+<ChiclAfter>:
+	chiclafter : chiclafter
+	size_hint : 1, 1
+	pos_hint : {'center_x' : 0.5}
+	Image:
+		size : self.size
+		source :  "f:/project/images/chicl_action1.png"
+	TextInput:
+		size_hint : None, None
+		font_size : 20
+		id: chiclafter
+		text : ""
+		background_normal: ''
+		background_color : 0.69,0.46,0.13
+		multiline : False
+		size : 320, 108
+		pos_hint : {'center_y' : 0.5}
+		on_text_validate:
+			root.chiclsave()
+	Image:
+		size : self.size
+		source :  "f:/project/images/chicl_action2.png"
+
+<Choice>:
+	choice : choice
+	Image:
+		size : self.size
+		source :  "f:/project/images/choice1.png"
+	TextInput:
+		size_hint : None, None
+		size : 320, 106
+		font_size : 20
+		id: choice
+		text : ""
+		background_normal: ''
+		background_color : 0.61,0.23,0.96
+		multiline : False
+		pos_hint : {'center_y' : 0.5}
+		on_text_validate:
+			root.choice_add()
+	Image:
+		size : self.size
+		source :  "f:/project/images/choice2.png"
+<ChoiceAfter>:
+	no : no
+	yes : yes
+	spacing : 20
+	TextInput:
+		id : no
+		font_size : 20
+		size_hint : 1, 0.5
+		pos_hint : {'top' : 1}
+		background_normal: ''
+		background_color: 1,0.22,0.50
+		multiline : False
+		on_text_validate:
+			root.choice_no()
+
+	TextInput:
+		id : yes
+		font_size : 20
+		size_hint : 1, 0.5
+		size : 100, 100
+		pos_hint : {'top' : 1}
+		background_normal: ''
+		background_color: 0,0.77,0
+		multiline : False
+		on_text_validate:
+			root.choice_yes()
+
+<Action>:
+	action : action
+	Image:
+		size : self.size
+		source :  "f:/project/images/action1.png"
+	TextInput:
+		size : 320, 108
+		size_hint : None, None
+		text: ""
+		pos_hint : {'center_y' : 0.5}		
+		id : action
+		font_size : 20
+		multiline : False
+		background_normal: ''
+		background_color: 0.20,0.54,0.67
+		on_text_validate:
+			root.give_action()
+	Image:
+		size : self.size
+		source :  "f:/project/images/action2.png"
+
+<Container>:
+	orientation : 'horizontal'
+	results : results
+	create: created_file
+	space: space
+	panel : panel
+
+
+	spacing : 7
+	BoxLayout:
+		canvas.before:
+	        Rectangle:
+	            # self here refers to the widget i.e FloatLayout
+	            pos: self.pos
+	            size: self.size
+	            source : "f:/project/images/menu.png"
+		pos_hint : {'center_y' : 0.5}
+		size_hint : 0.3, 1
+		GridLayout:
+			cols : 2
+			padding : 14
+			id : panel
+
+			spacing : 14
+
+			pos_hint : {'center_y': 0.5}
+
+			size_hint : 0.2, 0.75
+
+			Button:
+				id:created_file
+				font_size : 20
+				size: 200,100
+				background_normal : ""
+				background_color : 0,0,0,0
+				color : 0 ,0, 0,1
+				on_release:
+					open('e:/test.txt', 'w+')
+				Image:
+					source : 'f:/project/images/button1.png'
+					size: self.parent.size
+					pos: self.parent.pos
+
+			Button:
+				font_size : 20
+				background_normal : ""
+				background_color : 0,0,0,0
+				color : 0 ,0, 0,1
+				size: 100,100
+				size_hint : 1, 1
+
+				on_release:
+					root.add_button1()
+
+				Image:
+					source : 'f:/project/images/button.png'
+					size: self.parent.size
+					pos: self.parent.pos
+
+			Button:
+				font_size : 20
+				background_normal : ""
+				background_color : 0,0,0,0
+				color : 0 ,0, 0,1
+				id: button4
+				size: 200,100
+				on_release:
+					root.add_button2()
+				Image:
+					source : 'f:/project/images/button2.png'
+					size: self.parent.size
+					pos: self.parent.pos
+
+			Button:
+				font_size : 20
+				background_normal : ""
+				background_color : 0,0,0,0
+				color : 0 ,0, 0,1
+				id: button4
+				size: 200,100
+				on_release:
+					root.add_button5()
+				Image:
+					source : 'f:/project/images/button3.png'
+					size: self.parent.size
+					pos: self.parent.pos
+
+
+
+			Button:
+				font_size : 20
+				background_normal : ""
+				background_color : 0,0,0,0
+				color : 0 ,0, 0,1
+				size: 200,100
+				on_release:
+					root.add_button3()
+				Image:
+					source : 'f:/project/images/button4.png'
+					size: self.parent.size
+					pos: self.parent.pos
+
+
+			Button:
+				font_size : 20
+				background_normal : ""
+				background_color : 0,0,0,0
+				color : 0 ,0, 0,1
+				size: 200,100
+				on_release:
+					root.add_button4()
+				Image:
+					source : 'f:/project/images/button5.png'
+					size: self.parent.size
+					pos: self.parent.pos
+
+			Button:
+				font_size : 20
+				background_normal : ""
+				background_color : 0,0,0,0
+				color : 0 ,0, 0,1
+				size: 200,100
+				on_release:
+					root.show_result()
+				Image:
+					source : 'f:/project/images/button6.png'
+					size: self.parent.size
+					pos: self.parent.pos
+
+
+	BoxLayout:
+		id : space
+		orientation: 'vertical'
+		spacing : 10
+
+	BoxLayout:
+		orientation : 'vertical'
+		canvas.before:
+	        Rectangle:
+	            # self here refers to the widget i.e FloatLayout
+	            pos: self.pos
+	            size: self.size
+	            source : "f:/project/images/menu.png"
+		size_hint : 0.4, 1
+		Label:
+			font_size : 18
+			color : 1,1,1,1
+			id : results
+			text : "Тут появится\n твой код!"
+
